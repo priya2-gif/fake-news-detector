@@ -3,11 +3,11 @@ import pickle
 import re
 import nltk
 import string
+import os
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-# Download NLTK data
-import os
+# Set up NLTK data directory for Streamlit Cloud
 nltk_data_dir = os.path.join(os.getcwd(), 'nltk_data')
 nltk.download('punkt', download_dir=nltk_data_dir)
 nltk.download('stopwords', download_dir=nltk_data_dir)
