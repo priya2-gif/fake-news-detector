@@ -7,9 +7,8 @@ import os
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-# Set up NLTK data directory for Streamlit Cloud
+# Set up NLTK data directory (safe for Streamlit Cloud)
 nltk_data_dir = os.path.join(os.getcwd(), 'nltk_data')
-nltk.download('punkt', download_dir=nltk_data_dir)
 nltk.download('stopwords', download_dir=nltk_data_dir)
 nltk.download('wordnet', download_dir=nltk_data_dir)
 nltk.data.path.append(nltk_data_dir)
@@ -18,7 +17,7 @@ nltk.data.path.append(nltk_data_dir)
 model = pickle.load(open('fake_news_model.pkl', 'rb'))
 vectorizer = pickle.load(open('tfidf_vectorizer.pkl', 'rb'))
 
-# Text cleaning function
+# Text preprocessing
 stop_words = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 
@@ -29,7 +28,7 @@ def clean_text(text):
     text = re.sub(r'[%s]' % re.escape(string.punctuation), '', text)
     text = re.sub(r'\n', '', text)
     text = re.sub(r'\w*\d\w*', '', text)
-    words = nltk.word_tokenize(text)
+    words = text.split()  # ✅ replaced nltk.word_tokenize with split()
     words = [lemmatizer.lemmatize(w) for w in words if w not in stop_words]
     return " ".join(words)
 
