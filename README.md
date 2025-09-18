@@ -4,4 +4,4 @@ This is a web app built using Streamlit to detect whether a news article is **Fa
 
 ## 🚀 Try it now
 
-[Live App Link]((https://fake-news-detector-hv4kt2vpwzxba4adzw3hed.streamlit.app/))
+[Live App Link](https://fake-news-detector-hv4kt2vpwzxba4adzw3hed.streamlit.app/)
